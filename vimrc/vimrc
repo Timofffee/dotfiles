@@ -89,6 +89,8 @@ set termencoding=utf-8
 " Перед сохранением .vimrc обновлять дату последнего изменения
 autocmd! bufwritepre $MYVIMRC call setline(1, '" Last update: '.strftime("%d.%m.%Y %H:%M"))
 syntax on " включить подсветку синтаксиса
+" Нумерация строк
+set nu
 " Применять типы файлов
 filetype on
 filetype plugin on
