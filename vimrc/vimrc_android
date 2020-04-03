@@ -170,6 +170,25 @@ function! RemoveTrailingSpaces()
    normal! 'yzt`z
 endfunction
 
+"" Сохранять умные резервные копии ежедневно
+function! BackupDir()
+   " определим каталог для сохранения резервной копии
+   if has('win32')
+        let l:backupdir = $TEMP.'\backup'
+    else
+        let l:backupdir = $VIMRUNTIME.'/backup/'.
+        \substitute(expand('%:p:h'), '^'.$HOME, '~', '')
+    endif
+   " если каталог не существует, создадим его рекурсивно
+   if !isdirectory(l:backupdir)
+      call mkdir(l:backupdir, 'p', 0700)
+   endif
+   " переопределим каталог для резервных копий
+   let &backupdir=l:backupdir
+   " переопределим расширение файла резервной копии
+   let &backupext=strftime('~%Y-%m-%d~')
+endfunction
+
 " Python --------------------------
 
 let python_hightlight_all = 1
