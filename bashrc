@@ -1,12 +1,5 @@
 [[ "$-" != *i* ]] && return
 
-alias ginit='git init'
-alias push='git push'
-alias commit='git commit -m'
-alias gaa='git add .'
-alias status='git status'
-alias cd_dno='cd /c/Users/Vigach\!/Downloads/OSPanel/domains/dno/'
-
 # get current branch in git repo
 function parse_git_branch() {
 	BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
